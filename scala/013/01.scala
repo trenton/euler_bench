@@ -7,4 +7,6 @@ def trimAndNew(s: String): BigInt = {
   BigInt(clean.get)
 }
 
-println(fromFile("numbers").getLines.foldLeft(0: BigInt)(_ + trimAndNew(_)))
+val sum = fromFile("numbers").getLines.foldLeft(0: BigInt)(_ + trimAndNew(_))
+println("sum: " + sum)
+println("first 10: " + sum.toString.substring(0, 10))
