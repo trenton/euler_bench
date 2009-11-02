@@ -9,13 +9,13 @@ def divisors(x: Int): Seq[Int] = {
 }
 
 // a number is prime iff it's only divisors are itself and 1
-def isPrime(x: Int): Boolean = {
+def isPrime(x: Int): Boolean = x match {
   // we know anything divisible by 2 isn't prime... except 2 itself
-  if(x == 2) true
-  if(x % 2 == 0 || x % 3 == 0) false
-
+  case 2 => true
+  // impossible to prime if divisible by 2 or 3
+  case x if x % 2 == 0 | x % 3 == 0 => false
   // sieve
-  divisors(x).length == 1
+  case _ => divisors(x).length == 1
 }
 
 val maxVal = 2000000
