@@ -6,8 +6,16 @@ def isEvenlyDivisible(dividend: Int, divisors: Seq[Int]): Boolean = {
     divisors.forall(dividend % _ == 0)
 }
 
+// search through all Natrual numbers
 val searchRange = 1 to Integer.MAX_VALUE
+
 // no need to check 1, since everything is always divisible by 1
 val divisors = 20 to 2 by -1
+
 // build a tuple of n and if all divisors are even
-println((searchRange.map((n) => (n, isEvenlyDivisible(n, divisors))) find(_._2 == true) get)._1)
+val result = searchRange.map((n) => (n, isEvenlyDivisible(n, divisors))) find(_._2 == true)
+
+result match {
+  case None => println("Failed to find any such divisor")
+  case _ => println((result get)._1)
+}
